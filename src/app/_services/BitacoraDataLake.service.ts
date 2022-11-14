@@ -23,19 +23,15 @@ export class BitacoraDataLakeService {
   constructor(private http: HttpClient) { }
 
 
-  consultarBasesDatos(): Observable<any> {
-    return this.http.get(this.apiURL + '/catalogoBaseDatos/getAllCatBaseDatos'  , httpOptions);
+  consultarBitacora(): Observable<any> {
+    return this.http.get(this.apiURL + '/bitacora/getAllBitacora'  , httpOptions);
   }
 
   runJobs(SchedulerJobInfo:any): Observable<any> {
     return this.http.post(this.apiURL2 + '/api/runJob'  , SchedulerJobInfo,  httpOptions);
   }
 
-  consultarBitacora(): Observable<any> {
-    return this.http.get(this.apiURL + '/bitacora/getAllBitacora'  , httpOptions);
-  }
-
-  
+ 
   
   grabarBusqueda(request: any): Observable<any> {
     return this.http.post(this.apiURL + '/guardarBusqueda', request, httpOptions);

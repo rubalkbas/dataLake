@@ -56,7 +56,7 @@ const ELEMENT_DATA: CatalogoTabla[] = [
     }
 
     ngOnInit(): void {
-      this.dataLakeCatalogoService.consultarBitacora().subscribe(data=>{
+      this.BitacoraDataLakeService.consultarBitacora().subscribe(data=>{
 
         console.log(data);
         this.dataSource = new MatTableDataSource;
