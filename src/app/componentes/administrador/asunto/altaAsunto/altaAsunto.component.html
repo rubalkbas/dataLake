@@ -1,0 +1,822 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+  <!-- Main -->
+  <div class="flex-auto p-6 sm:p-10">
+
+    <!-- CONTENT GOES HERE -->
+    <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
+
+      <div class="app-content content">
+
+        <div class="content-card">
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{(id) ? 'Edit' : 'Alta: Asuntos'}} </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+
+
+              <mat-accordion>
+                <!-- #docregion basic-panel -->
+                <!-- #docregion hide-toggle -->
+                <mat-expansion-panel hideToggle [expanded]="step === 0" (opened)="setStep(0)"  hideToggle
+                  *ngIf="showCategorias">
+
+                  <mat-expansion-panel-header class="right-aligned-header" >
+
+                    <mat-panel-description>
+                      {{cateTot}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <!-- aqui va el contenido del priomer exopancion panel -->
+                  <mat-toolbar color="#DC143C">
+                    <button mat-icon-button>
+                      <mat-icon>home</mat-icon>
+                    </button>
+                    <div> Selecciona tu Categoría de Asunto</div>
+                    <div fxFlex class="wid30"></div>
+
+                    <!-- <button mat-raised-button matStepperPrevious color="warn">Atras</button> -->
+                    <!-- <button mat-icon-button matTooltip="Clear all steps" (click)="onRemoveAll()">
+                      <mat-icon>delete</mat-icon>
+                    </button> -->
+
+                  </mat-toolbar>
+                  <mat-horizontal-stepper [linear]="true" #stepper (selectionChange)="onStepChange($event)">
+
+                    <mat-step *ngFor="let step of newSteps; let i = index">
+                     
+                      <ng-template matStepLabel>{{step.title || 'Elige una Categoria!'}} <mat-icon class="eight35"
+                          (click)="stepSeleccionado($event,i)">trending_flat
+                        </mat-icon>
+                      </ng-template>
+                      <ul class="list">
+                        <div *ngFor="let option of categoriasLista ; let i = index ; let l = length">
+                          <mat-radio-group class="example-radio-group" (change)="changeStep($event, i)">
+                            <div class="col-md-12 ">
+                              <mat-radio-button [value]="categoriasLista[i].idCatAsntPk">
+                                <span class="wrap-mat-radio-label">
+
+                                  {{option.dscCatAsnto}}
+                                </span>
+                         
+                              </mat-radio-button>
+                            </div>
+                          </mat-radio-group>
+                        </div>
+                      </ul>
+
+
+
+                      <!--  <mat-radio-group class="example-radio-group" (change)="changeStep($event, i)">
+                          <div class="row autocolu">
+
+                            <div class="col-md-4">
+                              <mat-radio-button [value]="categoriasLista[i].idCatAsntPk">
+                                {{option.dscCatAsnto}}
+                              </mat-radio-button>
+                            </div>
+
+                       
+                            <div class="col-md-4">
+                              <mat-radio-button [value]="categoriasLista[i].dscCatAsnto">
+                                {{option.dscCatAsnto}}
+                              </mat-radio-button>
+                            </div>
+
+                            <div class="col-md-4">
+                              <mat-radio-button [value]="categoriasLista[i].dscCatAsnto">
+                                {{option.dscCatAsnto}}
+                              </mat-radio-button>
+                            </div>  
+
+                          </div>
+
+                        </mat-radio-group> -->
+
+
+                        <button mat-raised-button matStepperPrevious color="warn" class="floatRight"   *ngIf="muestraSiguiente">Regresar</button>
+                    </mat-step>
+
+                    <mat-step>
+                      <ng-template matStepLabel>
+                      </ng-template>
+                     
+                    </mat-step>
+
+                  </mat-horizontal-stepper>
+                  <mat-action-row> 
+                    <!--<button mat-button color="primary" (click)="nextStep()">Next</button>-->
+                  </mat-action-row>
+                </mat-expansion-panel>
+
+
+
+                <!-- #enddocregion basic-panel -->
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle *ngIf="this.mostrarAlta">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <h4>Asuntos  {{this.nombreCat}}</h4>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <mat-accordion class="example-headers-align">
+                    <div *ngIf="mostrar">
+                      <mat-expansion-panel [expanded]="step2 === 0" (opened)="setStep2(0)" hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Preguntas Relacionadas
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <div class="email-header-left d-flex align-items-center mb-1">
+                        </div>
+                        <!-- email details  -->
+                        <div class="row">
+                          <div class="col-12" id="anexoasunto">
+                            <section id="form-repeater-2">
+                              <div class="row" id="anexoasunto">
+                                <div class="col-md-8">
+                                    <div class="card" id="anexoasunto">
+                                        <div class="card-header" id="anexoasunto">
+                                            <h4 class="card-title" id="anexoasunto">Preguntas Relacionadas
+                                            </h4>
+                                            <hr>
+                                        </div>
+                                        <div class="card-content" id="anexoasunto">
+                                            <div class="card-body" id="anexoasunto">
+                                                <div class="row" id="anexoasunto">
+                                                    <div class="col-12" id="anexoasunto">
+                                                        <div class="{{respuestas.mediaClass}}"
+                                                            *ngFor="let respuestas of preguntasArray; let i = index">
+                                                            <div class="col-11" id="anexoasunto">
+                                                                <h3><strong> {{respuestas.grlPreg}}
+                                                                    </strong></h3>
+                                                                <h4>{{respuestas.grlResp}} </h4>
+                                                            </div>
+                                                            <div class="col-1" id="anexoasunto">
+                                                                <button id="anexoasunto" mat-raised-button
+                                                                    color="warn"
+                                                                    (click)="cargarAnexos(respuestas.id)">
+                                                                    <mat-icon class="colorIcono">description
+                                                                    </mat-icon> Mostrar Anexos
+                                                                </button>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card" id="anexoasunto">
+                                        <div class="card-header" id="anexoasunto">
+                                            <h4 class="card-title" id="anexoasunto">Encuesta de
+                                                Satisfacción
+                                            </h4>
+                                            <hr>
+                                        </div>
+                                        <div class="card-content collapse show" id="anexoasunto">
+                                            <div class="card-body" id="anexoasunto">
+                                                <form [formGroup]="form" fxLayout="row wrap" id="anexoasunto">
+                                                    <div class="row" id="anexoasunto">
+                                                        <div class="col-md-4" id="anexoasunto">
+                                                            <mat-radio-button class="example-radio-button" id="anexoasunto1"
+                                                                value="Muy Mala"
+                                                                (change)="check($event,'Muy Mala',1)">
+                                                                Muy Mala
+                                                            </mat-radio-button>
+                                                        </div>
+                                                        <div class="col-md-4" id="anexoasunto">
+                                                            <mat-radio-button class="example-radio-button"
+                                                                value="Mala" id="anexoasunto2"
+                                                                (change)="check($event,'Mala',1)">
+                                                                Mala
+                                                            </mat-radio-button>
+                                                        </div>
+                                                        <div class="col-md-4" id="anexoasunto">
+                                                            <mat-radio-button class="example-radio-button"
+                                                                value="Regular" id="anexoasunto3"
+                                                                (change)="check($event,'Regular',1)">
+                                                                Regular
+                                                            </mat-radio-button>
+                                                        </div>
+                                                        <div class="col-md-4" id="anexoasunto">
+                                                            <mat-radio-button class="example-radio-button"
+                                                                value="Bien" id="anexoasunto4"
+                                                                (change)="check($event,'Bien',1)">
+                                                                Bien
+                                                            </mat-radio-button>
+                                                        </div>
+                                                        <div class="col-md-4" id="anexoasunto">
+                                                            <mat-radio-button class="example-radio-button"
+                                                                value="Muy Bien" id="anexoasunto5"
+                                                                (change)="check($event,'Muy Bien',1)">
+                                                                Muy Bien
+                                                            </mat-radio-button>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col" id="anexoasunto">
+                                                            <button id="anexoasunto" mat-raised-button
+                                                                color="warn" (click)="guardarEncuesta()">
+                                                                <mat-icon  id="anexoasunto" class="colorIcono">note_add
+                                                                </mat-icon> Grabar Encuesta
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <hr>
+                                                <p></p>
+                                                <p></p>
+                                                <h3 class="card-title">Si no encontró respuesta, puede
+                                                    crear un asunto dando click en el botón "Crear":
+                                                </h3>
+                                                <div class="row">
+                                                    <div class="col">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7" id="detaAUA">
+
+                                    <!-- Inicia card de quejas -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title" id="tel-repeater">Anexos Urls
+                                            </h4>
+                                        </div>
+                                        <hr>
+                                        <div class="card-content collapse show">
+                                            <div class="card-body" id="detaAUA">
+
+                                                <div class="mat-elevation-z8" id="detaAUA">
+                                                    <!-- listado de alertas -->
+                                                    <table mat-table [dataSource]="dataSourceU" id="detaAUA">
+                                                        <caption hidden>Tabla que lista las alertas
+                                                        </caption>
+                                                        <!-- Position Column -->
+                                                        <ng-container matColumnDef="id" id="detaAUA">
+                                                            <th mat-header-cell id="id"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Id</th>
+                                                            <td mat-cell *matCellDef="let element">
+                                                                {{element.id}} </td>
+                                                        </ng-container>
+
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="descripcion"
+                                                            id="detaAUA">
+                                                            <th mat-header-cell id="descripcion"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Descripción</th>
+                                                            <td mat-cell *matCellDef="let element">
+                                                                {{element.descripcion}} </td>
+                                                        </ng-container>
+
+                                                        <!-- Weight Column -->
+                                                        <ng-container matColumnDef="txtUrl" id="detaAUA">
+                                                            <th mat-header-cell id="txtUrl"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Url </th>
+                                                            <td mat-cell *matCellDef="let element">
+                                                                {{element.txtUrl}} </td>
+                                                        </ng-container>
+
+                                                        <!-- Weight Column -->
+                                                        <ng-container matColumnDef="dscDetll" id="detaAUA">
+                                                            <th mat-header-cell id="dscDetll"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Descripcion Detallada</th>
+                                                            <td mat-cell *matCellDef="let element"> <a
+                                                                    href="{{element.dscDetll}}">{{element.dscDetll}}</a>
+                                                            </td>
+                                                        </ng-container>
+
+                                                        <tr mat-header-row
+                                                            *matHeaderRowDef="displayedColumnsU"
+                                                            id="detaAUA"></tr>
+                                                        <tr mat-row
+                                                            *matRowDef="let row; columns: displayedColumnsU;">
+                                                        </tr>
+                                                    </table>
+
+                                                    <mat-paginator #TableUPaginator="matPaginator"
+                                                        id="detaAUA" [pageSize]="5"
+                                                        [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Termina card de quejas -->
+                                </div>
+                                <div class="col-md-5">
+
+                                    <!-- Inicia card de anexos -->
+                                    <div class="card" id="detaAA">
+                                        <div class="card-header">
+                                            <h4 class="card-title" id="tel-repeater">Anexos - Archivos
+                                            </h4>
+                                        </div>
+                                        <hr>
+                                        <div class="card-content collapse show">
+                                            <div class="card-body">
+
+                                                <div class="mat-elevation-z8" id="detaAA">
+                                                    <!-- listado de alertas -->
+                                                    <table mat-table [dataSource]="dataSourceA" id="detaAA">
+                                                        <caption hidden>Tabla que lista las alertas
+                                                        </caption>
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="id" id="detaAA">
+                                                            <th mat-header-cell id="id"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Id Archivo </th>
+                                                            <td mat-cell *matCellDef="let element">
+                                                                {{element.idPregRelCateg}} </td>
+                                                        </ng-container>
+
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="descripcion" id="detaAA">
+                                                            <th mat-header-cell id="descripcion"
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Nombre Archivo </th>
+                                                            <td mat-cell *matCellDef="let element">
+                                                                {{element.descripcion}} </td>
+                                                        </ng-container>
+
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="descarga" id="descarga">
+                                                            <th id="detaAA" mat-header-cell
+                                                                class="colorEncabezado" *matHeaderCellDef>
+                                                                Descargar Archivo
+                                                            </th>
+                                                            <td id="detaAA" mat-cell
+                                                                *matCellDef="let element">
+                                                                <button mat-icon-button (click)="generaArchivo(element.id,element.descripcion, element.grlExtArchAnexo)" id="detaA">
+                                                                    <mat-icon class="styleColor" id="detaAA">
+                                                                        download
+                                                                    </mat-icon>
+                                                                </button>
+                                                            </td>
+                                                        </ng-container>
+
+                                                        <tr mat-header-row
+                                                            *matHeaderRowDef="displayedColumnsA" id="detaAA">
+                                                        </tr>
+                                                        <tr mat-row
+                                                            *matRowDef="let row; columns: displayedColumnsA;">
+                                                        </tr>
+                                                    </table>
+
+                                                    <mat-paginator #TableAPaginator="matPaginator"
+                                                        id="detaAA" [pageSize]="5"
+                                                        [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Termina card de anexos -->
+
+                                </div>
+                            </div>
+                            </section>
+
+                          </div>
+                        </div>
+                        <!-- email details  end   (click)="this.prevStep2()"   -->
+                      </mat-expansion-panel>
+                      <br>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <!-- <div fxLayout="column wrap" fxLayoutAlign="center" class="styleBoton"> -->
+                        <button mat-raised-button color="warn" class="styleBoton2" *ngIf="mostrar" (click)="this.solucionSatisfactoria()">
+                          Solicitud Satisfactoria
+                        </button>
+
+                        <button mat-raised-button color="warn" class="styleBoton2" *ngIf="mostrar"
+                          (click)="this.nextStep2()">
+                          Crear Asunto
+                        </button>
+                      </div>
+                    </div>
+
+                    <br><br>
+
+                    <!--Formulario De Crear Asunto-->
+                    <mat-expansion-panel [expanded]="step2 === 1" (opened)="setStep2(1)" hideToggle *ngIf="!mostrar">
+
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <h4>Crear Asunto</h4>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <section id="form-repeater">
+                        <form [formGroup]="form" fxLayout="row wrap">
+
+
+                          <div class="row">
+                            <div class="col-md-7">
+                              <!-- Inicia card de datos generales -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Datos Generales
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="nombre">Nombre</mat-label>
+                                          <input matInput id="nombre" value="Pedro Gómez" formControlName="nombre"
+                                            [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="telefono">Teléfono</mat-label>
+                                          <input matInput appBlockCopyPaste id="telefono"
+                                            (keypress)="numberOnly($event)" value="442 1234567"
+                                            formControlName="telefono" [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="movil">Móvil</mat-label>
+                                          <input matInput appBlockCopyPaste id="movil" value="442 4567890"
+                                            formControlName="movil" [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="correo">Correo Electrónico</mat-label>
+                                          <input matInput value="juan@correo.com" formControlName="correo" id="correo"
+                                            [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de datos generales -->
+
+                              <!-- Inicia card de datos del asunto -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Datos de Contacto
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-md-8">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="direccionContacto">Dirección</mat-label>
+                                          <textarea matInput id="direccionContacto" value="" rows="1"
+                                            formControlName="direccionContacto" aria-label="direccionContacto"
+                                            maxlength="50"></textarea>
+                                          <mat-error *ngIf="form.controls.direccionContacto.errors?.required">El
+                                            campo direccion de contacto es requerido.</mat-error>
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="movilContacto">Móvil</mat-label>
+                                          <input matInput appBlockCopyPaste id="movilContacto"
+                                            (keypress)="numberOnly($event)" value="1234567890" placeholder="5522115533"
+                                            formControlName="movilContacto" maxlength="10">
+                                          <mat-error class="font13"
+                                            *ngIf="form.controls.movilContacto.errors?.required">El
+                                            campo movil contacto es requerido.</mat-error>
+                                          <mat-error class="font13"
+                                            *ngIf="form.get('movilContacto').hasError('minlength')">Debe ser 10 numeros
+                                            exactos.</mat-error>
+                                          <mat-error class="font13"
+                                            *ngIf="form.get('movilContacto').hasError('maxlength')">Debe ser 10 numeros
+                                            exactos.</mat-error>
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de datos de contacto -->
+                            </div>
+
+                            <div class="col-md-5">
+                              <!-- Inicia card  de datos del asunto -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Datos Del Asunto
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body" id="card2">
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="descripcionBreveAsunto">Descripción Breve
+                                          </mat-label>
+                                          <textarea matInput id="descripcionBreveAsunto" value="" rows="8"
+                                            formControlName="descripcionBreveAsunto" aria-label="descripcionBreveAsunto"
+                                            maxlength="100"></textarea>
+                                          <mat-error class="font13"
+                                            *ngIf="form.controls.descripcionBreveAsunto.errors?.required">El
+                                            campo descripcion breve del asunto es requerido.</mat-error>
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+
+
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de datos del asunto -->
+                            </div>
+
+                          </div>
+                          <div class="row" id="nuevo3">
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de datos del centro -->
+                              <div class="card" id="nuevo3">
+                                <div class="card-header" id="nuevo3">
+                                  <h4 class="card-title" id="nuevo3">Datos del Centro
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show" id="nuevo3">
+                                  <div class="card-body" id="nuevo3">
+
+                                    <div class="row" id="nuevo3">
+                                      <div class="col-md-6" id="nuevo3">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="centro">Centro</mat-label>
+                                          <input matInput id="centro" formControlName="centro" [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col-md-6" id="nuevo3">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="telefonoCentro">Teléfono</mat-label>
+                                          <input matInput id="telefonoCentro" formControlName="telefonoCentro"
+                                            [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                    <div class="row" id="nuevo3">
+                                      <div class="col" id="nuevo3">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="direccionCentro">Dirección</mat-label>
+                                          <input matInput id="direccionCentro" formControlName="direccionCentro"
+                                            [readonly]="true">
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de datos del centro -->
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de descripcion detallada -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Descripción Detallada
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <mat-form-field appearance="fill">
+                                          <textarea matInput id="descripcionDetallada"
+                                            formControlName="descripcionDetallada" rows="5"
+                                            formControlName="descripcionDetallada"
+                                            value="Se apago el monitor de forma repentina y despues intente reiniciar el equipo pero no paso nada. Lo intente varias veces y seguia igual"
+                                            aria-label="descripcionDetallada" maxlength="999" ></textarea>
+                                          <mat-error class="font13"
+                                            *ngIf="form.controls.descripcionDetallada.errors?.required">El
+                                            campo descripcion detallada es requerido.</mat-error>
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de descripcion detallada -->
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de historico -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Histórico
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+
+                                    <div class="row">
+                                      <div class="col">
+                                        <label class="styleEtiqueta">En este apartado se muestra la evolución
+                                          cronológica de todas las acciones
+                                          que se han realizado sobre el asunto, en este momento el estado del asunto
+                                          será NUEVO...</label>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de historico -->
+                            </div>
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de información requerida -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title">Información Requerida
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col">
+                                        <label class="styleEtiqueta">No es necesario más información del
+                                          asunto dentro de esta categoria…</label>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de información requerida -->
+                            </div>
+                          </div>
+                          <div class="row" id="htm2">
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de quejas -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Anexos Urls
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-5">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="nombreUrl">Nombre Url</mat-label>
+                                          <input matInput id="nombreUrl" maxlength="100" formControlName="nombreUrl">
+                                        </mat-form-field>
+                                      </div>
+                                      <div class="col-7">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="url">Url</mat-label>
+                                          <input matInput maxlength="300" id="url" formControlName="url">
+                                          <mat-error class="font13" *ngIf="form.controls.url.errors?.pattern">Debe de
+                                            ingresar un formato de URL valido.</mat-error>
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <mat-form-field appearance="fill">
+                                          <mat-label for="descripcionUrl">Descripción</mat-label>
+                                          <input matInput maxlength="300" id="descripcionUrl"
+                                            formControlName="descripcionUrl">
+                                        </mat-form-field>
+                                      </div>
+                                      <button mat-raised-button class="styleBoton" color="warn"
+                                        (click)="this.agreaUrl()">
+                                        Agregar URL
+                                      </button>
+                                    </div>
+                                    <div class="row">
+                                      <mat-selection-list #url [multiple]="false" class="col-12 mat-form-field">
+                                        <mat-list-option *ngFor="let url of listaUrls" [value]="url.url">
+
+                                          <div class="row">
+                                            <div class="col-10 mat-form-field padding20">{{url.nombreUrl}}</div>
+                                            <div class="col-2 mat-form-field" class="styleBoton4">
+                                              <button mat-icon-button color="warn" class="styleBoton4 "
+                                                aria-label="eliminar" (click)="this.eliminaUrls(url.url)">
+                                                <mat-icon>delete</mat-icon>
+                                              </button>
+                                            </div>
+                                          </div>
+                                          <hr class="hr2">
+                                        </mat-list-option>
+                                      </mat-selection-list>
+
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de quejas -->
+                            </div>
+                            <div class="col-md-6">
+
+                              <!-- Inicia card de anexos -->
+                              <div class="card">
+                                <div class="card-header">
+                                  <h4 class="card-title" id="tel-repeater">Anexos Documentos
+                                  </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content collapse show">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col">
+
+                                        <ngx-dropzone (change)="onSelect($event)" [expandable]="true"
+                                          [accept]="'text/*,image/jpg,image/png,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                                          (removeFile)="onRemoveFile($event)">
+                                          <ngx-dropzone-label>Arrastre los archivos que desea adjuntar aquí....
+                                          </ngx-dropzone-label>
+                                          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                            (removed)="onRemove(f)">
+                                            <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+                                          </ngx-dropzone-preview>
+                                        </ngx-dropzone>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Termina card de anexos -->
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <!-- <div fxLayout="column wrap" fxLayoutAlign="center" class="styleBoton"> -->
+                              <button mat-raised-button color="warn" class="styleBoton2" (click)="this.regresarBoton()">
+                                Regresar
+                              </button>
+                              &nbsp;
+                              <button mat-raised-button color="warn" class="styleBoton2" (click)="guardar()">
+                                Enviar Asunto
+                              </button>
+                            </div>
+                          </div>
+
+                        </form>
+                      </section>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  <!-- aqui cierra el form y el panel expandible-->
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

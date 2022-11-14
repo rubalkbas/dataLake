@@ -1,0 +1,18 @@
+{
+  "app": {
+    "applicationName": "INTRAMX-APPEB-SSO_PORTAL-CAU",
+    "cookieName": "cookie_INTRAMX-APPEB-SSO_PORTAL-CAU",
+    "environment": "LOCAL",
+    "headerTokenName": "cookie-aplicativa",
+    "production": false,
+    "urlAsuntos": "https://mxcu-ms-asuntos-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/asuntos-service",
+    "urlAutoAyuda": "https://mxcu-ms-autoayuda-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/autoayuda-service",
+    "urlBusqueda": "https://mxcu-ms-busquedas-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/busquedas-service",
+    "urlCategorias": "https://mxcu-ms-categorias-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/categorias-service",
+    "urlCentros": "https://mxcu-ms-centros-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/centros-service",
+    "urlPerfil": "https://mxcu-ms-perfiles-service-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp/perfiles-service",
+    "urlSantec": "https://mxcu-security-auth-mxinternalcau-dev.appls.mex01.mex.dev.mx1.paas.cloudcenter.corp",
+    "urlIntranetLogin": "http://mejico.isban.dev.corp/LOGMEX_ENS/BtoChannelDriver.bto?dse_operationName=loginMEX",
+    "version": "1.0.0" 
+  }
+}

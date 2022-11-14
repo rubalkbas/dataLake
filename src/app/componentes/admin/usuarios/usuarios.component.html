@@ -1,0 +1,225 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+
+        <!-- CONTENT GOES HERE -->
+        <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
+            <div class="app-content content">
+
+                <div class="content-card">
+                    <div class="content-header row mb-1">
+
+                    </div>
+
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Administración de usuarios 
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+
+                            <!-- Alta -->
+
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    Asignación de Rol
+                                </mat-expansion-panel-header>
+
+
+                                <form #formDirective="ngForm" name="form" [formGroup]="form" autocomplete="off">
+
+                                    <section>
+                                        <div class="example-button-row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="codigoUsuario">Usuario N</mat-label>
+                                                <input matInput id="codigoUsuario" formControlName="codigoUsuario"
+                                                    maxlength="8" placeholder="Usuario Corporativo">
+
+                                                <mat-error 
+                                                    *ngIf="form.get('codigoUsuario').hasError('required')">El
+                                                    campo codigo es requerido.</mat-error>
+                                                <mat-error 
+                                                    *ngIf="form.get('codigoUsuario').hasError('minlength')">Debe ser 7
+                                                    caracteres minimo.</mat-error>
+                                                <mat-error 
+                                                    *ngIf="form.get('codigoUsuario').hasError('maxlength')">Debe ser 8
+                                                    caracteres maximo.</mat-error>
+
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="idRol">Rol</mat-label>
+                                                <mat-select formControlName="idRol">
+                                                    <mat-option *ngFor="let r of roles" [value]="r.idRol">
+                                                        {{ r.descripcion }}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-error 
+                                                    *ngIf="form.get('idRol').hasError('required')">El
+                                                    campo rol es requerido.</mat-error>
+
+                                            </mat-form-field>
+
+                                            <button mat-raised-button (click)="guardar()" color="warn"
+                                                class="styleBoton">
+                                                Guardar
+                                            </button>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="example-button-row">
+                                            
+                                            <mat-form-field class="styleNombre"  appearance="outline">
+                                                <mat-label for="nombre">Nombre</mat-label>
+                                                <input matInput id="nombre" formControlName="nombre"
+                                                    placeholder="Nombre" (keypress)="alfanumericoOnly2($event)"
+                                                    maxlength="50">
+                                                <mat-error 
+                                                    *ngIf="form.get('nombre').hasError('required')">El
+                                                    campo nombre es requerido.</mat-error>
+                                                <mat-error 
+                                                    *ngIf="form.get('nombre').hasError('maxlength')">El máximo de
+                                                    caracteres es
+                                                    50.</mat-error>
+
+                                            </mat-form-field>
+
+                                        </div>
+                                    </section>
+                                    <br>
+
+                                </form>
+
+
+
+
+                            </mat-expansion-panel>
+
+                            <!-- ENDS alta -->
+
+
+                            <mat-divider></mat-divider>
+
+                            <!-- Consulta -->
+
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    Consulta
+                                </mat-expansion-panel-header>
+
+                                <form #formDirective="ngForm" name="formSearch" [formGroup]="formSearch"
+                                    autocomplete="off">
+
+                                    <section>
+                                        <div class="example-button-row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="codigoUsuario">Usuario N</mat-label>
+                                                <input matInput #input id="codigoUsuario"
+                                                    formControlName="codigoUsuario"
+                                                    (keypress)="alfanumericoOnly($event)" maxlength="8"
+                                                    placeholder="Usuario Corporativo">
+
+                                            </mat-form-field>
+                                            <mat-form-field  appearance="outline">
+                                                <mat-label for="nombre">Nombre</mat-label>
+                                                <input matInput id="nombre" formControlName="nombre"
+                                                    placeholder="Nombre" (keypress)="alfanumericoOnly2($event)"
+                                                    maxlength="60">
+
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="idRol">Rol</mat-label>
+                                                <mat-select formControlName="idRol">
+                                                    <mat-option *ngFor="let r of roles" [value]="r.idRol">
+                                                        {{ r.descripcion }}
+                                                    </mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+                                    </section>
+                                    <mat-card-actions align="end">
+                                        <button mat-raised-button class="styleBoton" (click)="limpiar()" color="warn">
+                                            Limpiar
+                                        </button>
+                                        <button mat-raised-button class="styleBoton" (click)="buscar()" color="warn">
+                                            Buscar
+                                        </button>
+                                    </mat-card-actions>
+
+                                </form>
+
+
+                                <table mat-table matSort [dataSource]="dataSource" #TableOneSort="matSort">
+                                    <caption></caption>
+                                    <!-- usuario Column -->
+                                    <ng-container matColumnDef="codigoUsuario">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header id="codigoUsuario">
+                                            Usuario </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigoUsuario}} </td>
+                                    </ng-container>
+
+
+                                    <!-- nombre Column -->
+                                    <ng-container matColumnDef="nombre">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header id="nombre">Nombre
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    </ng-container>
+
+
+                                    <!-- rol Column -->
+                                    <ng-container matColumnDef="descripcionRol">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header id="descripcionRol">Rol
+                                        </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.descripcionRol}} </td>
+                                    </ng-container>
+
+                                    <!-- acciones Column -->
+                                    <ng-container matColumnDef="acciones">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header id="acciones">
+                                            Acciones </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <button mat-raised-button class="md-button" color="primary" (click)="actualizar(element)"
+                                                *ngIf="element.flgEstatus===0">&nbsp;&nbsp;&nbsp;Activar&nbsp;&nbsp;&nbsp;</button>
+                                            <button mat-raised-button class="md-button" color="warn" (click)="actualizar(element)"
+                                                *ngIf="element.flgEstatus===1">Desactivar</button>&nbsp;&nbsp;&nbsp;
+                                            <button mat-raised-button class="md-button" color="warn"
+                                                (click)="eliminar(element.codigoUsuario)">Eliminar</button>
+
+                                        </td>
+                                    </ng-container>
+
+
+
+
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                                        [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                                        (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
+
+                                </table>
+                                <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons>
+                                </mat-paginator>
+
+
+
+
+
+                            </mat-expansion-panel>
+
+                            <!-- ENDS consulta -->
+
+                        </mat-card-content>
+                    </mat-card>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

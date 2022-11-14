@@ -1,0 +1,82 @@
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+    top: auto;
+}
+
+.header-navbar .navbar-container ul.nav li a.dropdown-user-link .user-name {
+    margin-left: 0rem !important;
+}
+
+.border_bottom {
+    border-bottom: none !important;
+}
+
+:host ::ng-deep .dropdown-item:active {
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 991.98px) {
+  .ft-toggle-right {
+    display: none !important;
+  }
+
+  .ft-toggle-left {
+        display: none !important;
+  }
+
+  .collapse:not(.show) {
+    display: unset !important;
+  }
+}
+
+.header-navbar .navbar-header .navbar-brand .brand-text {
+  padding-left: 11px !important;
+}
+.nuev{
+  margin-bottom: 20px; margin-right: 25px;
+}
+
+.badgeForce{
+  
+    top: -11 !important;
+    right: -11 !important;
+    bottom: 30px !important;
+    left: 9 !important;
+ 
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  flex: 1;
+
+}
+
+
+.media-body {
+  display: block !important;
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: stretch !important;
+  margin-top: 0.5rem !important;
+}
+
+
+.dropdown-item{
+
+  white-space: normal !important;
+}
+
+.navbar-header{
+
+  background: #2c343b !important;
+
+  color: #fff !important;
+}
+
+.navbar-header .brand-text{
+  background: #2c343b !important;
+
+  color: #fff !important;
+
+}

@@ -1,0 +1,87 @@
+
+<p class="alineamiento">
+  <button mat-icon-button class="close-button" (click)="onNoClick()">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+</p>
+<br>
+<!-- <div mat-dialog-content> -->
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{rol.descripcion}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <!-- Alta -->
+
+    <form #formDirective="ngForm" name="form" [formGroup]="form" autocomplete="off">
+
+      <section>
+        <div class="example-button-row">
+
+          <mat-form-field class="wid30" appearance="outline">
+            <mat-label for="idFuncion">Funcion</mat-label>
+            <mat-select formControlName="idFuncion"  (selectionChange)="selectedValue($event)" >
+              <mat-option *ngFor="let r of funciones" [value]="r.idFuncion">
+                {{ r.descripcionFuncion }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-raised-button class="styleBoton" (click)="guardar()" color="warn" >
+            Guardar
+          </button>
+        </div>
+      </section>
+
+    </form>
+
+    <!-- ENDS alta -->
+
+
+    <mat-divider></mat-divider>
+
+    <!-- Consulta -->
+
+    <table mat-table matSort [dataSource]="dataSource" #TableOneSort="matSort">
+      <caption></caption>
+      <!-- usuario Column -->
+      <ng-container matColumnDef="idFuncion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header id="idFuncion"> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idFuncion}} </td>
+      </ng-container>
+
+
+      <!-- nombre Column -->
+      <ng-container matColumnDef="descripcionFuncion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header id="descripcionFuncion">Funcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcionFuncion}} </td>
+      </ng-container>
+
+
+      <!-- acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header id="acciones">Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="md-button" color="warn" (click)="eliminar(element)">Borrar</button>
+        </td>
+      </ng-container>
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"  class="eight35"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}" (mouseover)="row.hovered = true"
+        (mouseout)="row.hovered = false"  class="matRowDef"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <!-- ENDS consulta -->
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,161 @@
+
+.mat-form-field {
+  font-size: 12px;
+  width:30%;
+  height: fixed;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+ 
+  
+.mat-card {
+  margin-right: 10px;
+  margin-left: 10px;
+  top: 10px;
+  bottom: 10px;
+  width: 98%;
+}
+.mat-card-header .mat-card-title {
+  margin-bottom: 20px;
+}
+.mat-card-header .mat-card-subtitle {
+  margin-bottom: 5px;
+}
+
+.form{
+  margin-left: 5px;
+}
+
+.mat-card-actions{
+  
+  border-left-width: 50px;
+  margin-bottom: 30px;
+}
+
+
+
+.example-full-width {
+  width: 100%;
+}
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  border-radius: 2em;
+}
+
+/*   sistemas-table{
+  margin-top: 10px;
+
+
+} */
+
+
+
+//Tamaño de imagen en la tabla
+img {
+  width: 32px;
+  height: 32px;
+}
+
+//Tamaño de columna de la imagen en la tabla
+
+.mat-column-imageUrl {
+width: 15%;
+}
+
+.mat-header-cell {
+  background: rgb(255, 255, 255);
+  border-top: 3px solid rgb(238, 23, 23);
+  border-bottom: 3px solid rgb(238, 23, 23);
+  align-self: stretch;
+  text-align: center;
+  justify-content:center;
+}
+
+.mat-table {
+  height: auto;
+  max-height: 250px;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  width: 99%;
+}
+
+.mat-row{
+  padding-top: 0px; 
+  padding-bottom: 0px;
+  max-height: 38px;
+}
+
+
+
+
+.mat-row:nth-child(even){
+  background-color:#f8e7e7;
+}
+
+.mat-row:nth-child(odd){
+  background-color:rgb(255, 255, 255);
+}
+
+.mat-row.hovered {
+  background: #eebdbd;
+}
+.mat-row.highlighted {
+  background: #d46767c2;
+  }
+.highlighted{
+  background: #6dbce4c2; /* green */
+}
+.selected {
+  background-color: #6dbce4c2;
+  }
+
+
+.mat-cell {
+  text-align: left;
+  justify-content:center;
+  font-size: 8pt;
+  max-height: 10px;
+}
+
+
+
+.mat-tab-labels {
+    min-width: 25px ;
+    padding: 5px;
+    background-color: #AAADC0;
+  
+    color: #000000;
+    font-weight: 700;
+}
+
+.mat-tab-label-active {
+  color: #00ADEE ;
+} 
+
+.mat-expansion-panel-header {
+  background-color: #f6f6f6;
+}
+
+.styleBoton{
+  width:10%; 
+  margin-right: 10px;
+  margin-left: 10px;  
+  margin-bottom: 10px;
+}
+
+.md-button{
+  margin-right: 1vw;
+  font-size: 4px;
+  line-height: 23px;
+  
+}
+
+.mat-error{
+  font-size:13px;
+}
+.mat-header-row{
+  height: 35px;
+}

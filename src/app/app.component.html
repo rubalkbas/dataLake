@@ -1,0 +1,11 @@
+﻿<!-- main app container -->
+<ngx-loading-bar [includeSpinner]='false' height='3px' color="#209deb"></ngx-loading-bar>
+<ngx-spinner bdColor="rgba(225,225,225,0.8)" size="big" color="#fff"
+    template="<img src='assets/custom/Wait.gif'/>">
+    <p class="estiloFont">Cargando...</p>
+</ngx-spinner>
+
+<app-alert></app-alert>
+<router-outlet *ngIf="showContent"></router-outlet>
+
+<!-- credits -->

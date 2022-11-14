@@ -1,0 +1,148 @@
+
+<mat-dialog-content>
+  <div class="content-body">
+    <section id="form-repeater">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title" id="tel-repeater">Actualización al Catálogo de Claves
+              </h4>
+            </div>
+            <hr>
+
+            <div class="card-content collapse show">
+                <div class="card-body">
+
+
+                  <div class="row">
+
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                          <mat-label >Clave</mat-label>
+                          <input matInput  required>
+
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>Es Importe</mat-label>
+                            <mat-select >
+                                <mat-option [value]="1">
+                                    <span>Si</span>
+                                </mat-option>
+                                <mat-option [value]="2">
+                                    <span>No</span>
+                                </mat-option>
+                                                         
+                                
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>Es Negativo</mat-label>
+                            <mat-select >
+                                <mat-option [value]="1">
+                                    <span>Si</span>
+                                </mat-option>
+                                <mat-option [value]="2">
+                                    <span>No</span>
+                                </mat-option>
+                                                                                    
+                                
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+  
+                    
+
+                                                                
+                 </div>
+  
+                  <div class="row">
+
+
+                    <div class="col-md-4">
+                      <mat-form-field appearance="outline">
+                        <mat-label >Renglon</mat-label>
+                        <input matInput required >
+
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-md-8">
+                      <mat-form-field appearance="outline">
+                        <mat-label >Descripción Renglon</mat-label>
+                        <input matInput  required>
+
+                      </mat-form-field>
+                    </div>
+  
+                      
+
+                     
+  
+                                                                  
+                  </div>
+
+                  <div class="row">
+
+
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                          <mat-label >Columna</mat-label>
+                          <input matInput  >
+
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-md-8">
+                        <mat-form-field appearance="outline">
+                          <mat-label >Descripción Columna</mat-label>
+                          <input matInput  >
+
+                        </mat-form-field>
+                      </div>
+
+                     
+                                                                
+                 </div>
+
+                 
+
+                 
+                  
+  
+                </div>
+              </div>
+
+
+            
+
+            
+
+           
+          </div>
+
+        </div>
+        
+      </div>
+
+
+    </section>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
+  <button mat-raised-button class="buton" (click)="guardar()" >Actualizar</button>
+  <button mat-raised-button class="buton" (click)="baja()">Baja</button>
+  <button mat-button mat-dialog-close>Regresar</button>
+</mat-dialog-actions>

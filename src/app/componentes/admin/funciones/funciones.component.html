@@ -1,0 +1,104 @@
+<div class="app-content content">
+
+  <div class="content-card">
+    <div class="content-header row mb-1">
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Administración de Funciones </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <!-- Alta -->
+
+        <form #formDirective="ngForm" name="form" [formGroup]="form" autocomplete="off">
+
+          <section>
+            <div class="example-button-row">
+
+              <!-- <mat-form-field style="width:30%" appearance="outline">
+                <mat-label for="id">ID</mat-label>
+                <input matInput id="id" formControlName="id" placeholder="ID">
+                <mat-icon matSuffix>short_text</mat-icon>
+	               <div *ngIf="form.get('id').errors && form.get('id').dirty">
+		               <p *ngIf="form.get('id').hasError('required')">Es requerido</p>
+		               <p *ngIf="form.get('id').hasError('maxLength')">Max hasta 999999</p>
+		               <p *ngIf="form.get('id').hasError('pattern')">No se permite alfanumericos y no rebasar 6 posiciones</p>
+	               </div>
+              </mat-form-field> -->
+
+              <mat-form-field class="wid30" appearance="outline">
+                <mat-label for="descripcionFuncion">Función</mat-label>
+                <input matInput id="descripcionFuncion" formControlName="descripcionFuncion" placeholder="Descripcion"
+                  (keypress)="alfanumericoOnly($event)">
+                <mat-error class="font13" *ngIf="form.get('descripcionFuncion').hasError('required')">El
+                  campo descripcion es requerido.</mat-error>
+                <mat-error class="font13" *ngIf="form.get('descripcionFuncion').hasError('maxlength')">El maximo de
+                  caracteres es
+                  60.</mat-error>
+                <mat-error class="font13" *ngIf="form.get('descripcionFuncion').hasError('pattern')">Nos se pueden
+                  insertar caracteres especiales</mat-error>
+              </mat-form-field>
+              &nbsp; &nbsp;
+
+              <button mat-raised-button class="styleBoton" (click)="guardar()" color="warn">
+                Agregar
+              </button>
+            </div>
+          </section>
+
+        </form>
+
+        <!-- ENDS alta -->
+
+
+
+        <!-- Consulta -->
+        <br>
+        <table mat-table matSort [dataSource]="dataSource" #TableOneSort="matSort">
+          <caption></caption>
+          <!-- usuario Column -->
+          <ng-container matColumnDef="idFuncion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header id="idFuncion"> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.idFuncion}} </td>
+          </ng-container>
+
+
+          <!-- nombre Column -->
+          <ng-container matColumnDef="descripcionFuncion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header id="descripcionFuncion">Función </th>
+            <td mat-cell *matCellDef="let element"> {{element.descripcionFuncion}} </td>
+          </ng-container>
+
+
+          <!-- acciones Column -->
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header id="acciones">Acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button class="md-button" color="primary" (click)="actualizar(element)"
+                *ngIf="element.flgEstatus===0">&nbsp;&nbsp;&nbsp;Activar&nbsp;&nbsp;&nbsp;</button>
+              <button mat-raised-button class="md-button" color="warn" (click)="actualizar(element)"
+                *ngIf="element.flgEstatus===1">Desactivar</button>
+
+            </td>
+          </ng-container>
+
+
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"  class="eight35"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}" (mouseover)="row.hovered = true"
+            (mouseout)="row.hovered = false" class="matRowDef"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+
+        <!-- ENDS consulta -->
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

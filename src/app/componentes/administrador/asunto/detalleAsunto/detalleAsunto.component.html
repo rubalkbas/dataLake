@@ -1,0 +1,559 @@
+<div class="flex flex-col flex-auto min-w-0" id="detaAsun">
+
+  <!-- Main -->
+  <div class="flex-auto p-6 sm:p-10" id="detaAsun">
+
+    <!-- CONTENT GOES HERE -->
+    <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
+
+      <div class="app-content content">
+
+        <div class="content-card" id="detaAsun">
+
+          <mat-card>
+            <mat-card-header id="detaAsun">
+              <mat-card-title id="detaAsun">Detalle del Asunto: <strong>{{this.folio}}</strong> </mat-card-title>&nbsp;
+
+              <button id="detaAsun" mat-raised-button color="warn" [hidden]="!editarAsunto"
+                (click)="habilitarEdicion(1)">
+                <mat-icon>description</mat-icon> Editar
+              </button>
+              &nbsp; &nbsp;
+              <button id="detaAsun" mat-raised-button color="warn" [hidden]="!editarAsunto"
+                (click)="salirBoton()">
+                  <mat-icon>exit_to_app</mat-icon> Salir
+                </button>
+
+
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+              <section id="detaAsun">
+                <form id="detaAsun" [formGroup]="form" fxLayout="row wrap">
+
+
+                  <div class="row" id="detaAsun">
+                    <div class="col-md-7" id="detaAsun">
+                      <!-- Inicia card de datos generales -->
+                      <div class="card">
+                        <div class="card-header" id="detaAsun">
+                          <h4 class="card-title" id="tel-repeater">Datos Generales
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show" id="detaAsun">
+                          <div class="card-body">
+
+                            <div class="row" id="detaAsun">
+                              <div class="col" id="detaAsun">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="nombre">Nombre</mat-label>
+                                  <input matInput id="nombre" formControlName="nombre" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="telefono">Teléfono</mat-label>
+                                  <input matInput appBlockCopyPaste id="telefono" formControlName="telefono"
+                                    [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                            <div class="row" id="detaAsun">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="movil">Móvil</mat-label>
+                                  <input matInput appBlockCopyPaste id="movil" formControlName="movil"
+                                    [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="correo">Correo Electrónico</mat-label>
+                                  <input matInput id="correo" formControlName="correo" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de datos generales -->
+
+                      <!-- Inicia card de datos del asunto -->
+                      <div class="card" id="detaAsun">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Datos de Contacto
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show" id="detaAsun">
+                          <div class="card-body" id="detaAsun">
+                            <div class="row">
+                              <div class="col-md-8">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="direccionContacto">Dirección</mat-label>
+                                  <input matInput id="direccionContacto" formControlName="direccionContacto"
+                                    [readonly]="editarAsunto" maxlength="50">
+                                  <mat-error *ngIf="form.controls.direccionContacto.errors?.required">El
+                                    campo direccion de contacto es requerido.</mat-error>
+                                </mat-form-field>
+                                <label [hidden]="editarAsunto" class="labelEdicion">Se puede editar este campo</label>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="movilContacto">Móvil</mat-label>
+                                  <input matInput appBlockCopyPaste (keypress)="numberOnly($event)" id="movilContacto"
+                                    formControlName="movilContacto" [readonly]="editarAsunto" maxlength="10">
+                                  <mat-error class="font13" *ngIf="form.controls.movilContacto.errors?.required">El
+                                    campo movil contacto es requerido.</mat-error>
+                                  <mat-error class="font13" *ngIf="form.get('movilContacto').hasError('minlength')">Debe
+                                    ser 10 numeros
+                                    exactos.</mat-error>
+                                  <mat-error class="font13" *ngIf="form.get('movilContacto').hasError('maxlength')">Debe
+                                    ser 10 numeros
+                                    exactos.</mat-error>
+                                </mat-form-field>
+                                <label [hidden]="editarAsunto" class="labelEdicion">Se puede editar este campo</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de datos de contacto -->
+                    </div>
+
+                    <div class="col-md-5" id="detaAsun">
+                      <!-- Inicia card  de datos del asunto -->
+                      <div class="card" id="detaAsun">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Datos Del Asunto
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body" id="detaAsun">
+
+                            <div class="row">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="descripcionBreveAsunto">Descripción Breve
+                                  </mat-label>
+                                  <textarea matInput id="descripcionBreveAsunto" value="" rows="8"
+                                    formControlName="descripcionBreveAsunto" aria-label="descripcionBreveAsunto"
+                                    [readonly]="true"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                            <div class="row" id="detaAsun">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label>Fecha de Creación</mat-label>
+                                  <input matInput id="fechaCreacion" formControlName="fechaCreacion" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+
+                              <div class="col" id="detaAsun">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="estadoAsunto">Estado del Asunto</mat-label>
+                                  <input matInput id="estadoAsunto" formControlName="estadoAsunto" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                            <div class="row" id="detaAsun">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="prioridad">Prioridad</mat-label>
+                                  <input matInput id="prioridad" formControlName="motivoReapertura" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row" id="detaAsun">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="categoria">Categoría</mat-label>
+                                  <input matInput id="categoria" formControlName="categoria" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de datos del asunto -->
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <!-- Inicia card de datos del centro -->
+                      <div class="card" id="detaAsun">
+                        <div class="card-header" id="detaAsun">
+                          <h4 class="card-title" id="tel-repeater">Datos del Centro
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body">
+
+                            <div class="row">
+                              <div class="col-md-6" id="detaAsun">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="centro">Centro</mat-label>
+                                  <input matInput id="centro" formControlName="centro" [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6" id="detaAsun">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="telefonoCentro">Teléfono</mat-label>
+                                  <input matInput id="telefonoCentro" formControlName="telefonoCentro"
+                                    [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row" id="detaAsun">
+                              <div class="col" id="detaAsun">
+                                <mat-form-field appearance="fill">
+                                  <mat-label for="direccionCentro">Dirección</mat-label>
+                                  <input matInput id="direccionCentro" formControlName="direccionCentro"
+                                    [readonly]="true">
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de datos del centro -->
+                    </div>
+
+                    <div class="col-md-6" id="detaAsun">
+
+                      <!-- Inicia card de descripcion detallada -->
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Descripción Detallada
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show" id="detaAsun">
+                          <div class="card-body">
+
+                            <div class="row">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <textarea matInput id="descripcionDetallada" formControlName="descripcionDetallada"
+                                    rows="5" formControlName="descripcionDetallada" aria-label="descripcionDetallada" [readonly]="true"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de descripcion detallada -->
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-4">
+                      <!-- Inicia card de descripcion detallada -->
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Agregar Detalle o Comentarios
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show" id="detaAsun">
+                          <div class="card-body">
+
+                            <div class="row">
+                              <div class="col">
+                                <mat-form-field appearance="fill">
+                                  <textarea matInput id="detalleHistorico" formControlName="detalleHistorico"
+                                    rows="12" formControlName="detalleHistorico" aria-label="detalleHistorico"
+                                    [readonly]="editarAsunto"></textarea>
+                                  <mat-error class="font13" *ngIf="form.controls.detalleHistorico.errors?.required">
+                                    El campo detalle es requerido.</mat-error>
+                                </mat-form-field>
+                                <label [hidden]="editarAsunto" class="labelEdicion">Se puede agregar mas detalles</label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de descripcion detallada -->
+                    </div>
+                    <div class="col-md-8">
+
+                      <!-- Inicia card de historico -->
+                      <div class="card" id="detaAsun">
+                        <div class="card-header" id="detaAsun">
+                          <h4 class="card-title" id="tel-repeater">Histórico Detalles del Asunto
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body">
+
+                            <div class="mat-elevation-z8" id="detaAsun">
+                              <!-- listado de alertas -->
+                              <table id="detaAsun" mat-table [dataSource]="dataSource4">
+                                <caption hidden id="detaAsun">Tabla que lista las alertas</caption>
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="nombreUsuario" id="detaAsun">
+                                  <th mat-header-cell id="nombreUsuario" class="colorEncabezado" *matHeaderCellDef>Nombre</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="dscDetallada" id="detaAsun">
+                                  <th mat-header-cell id="dscDetallada" class="colorEncabezado" *matHeaderCellDef>Descripción Detallada </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.dscDetallada}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="fchModificacion" id="fchModificacion">
+                                  <th mat-header-cell id="fchModificacion" class="colorEncabezado" *matHeaderCellDef>Fecha Alta </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.fchModificacion}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns4" id="detaAsun"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+                              </table>
+
+                              <mat-paginator #TableFourPaginator="matPaginator" id="detaAsun" [pageSize]="5"
+                                [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de historico -->
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-7">
+
+                      <!-- Inicia card de historico -->
+                      <div class="card" id="detaAsun">
+                        <div class="card-header" id="detaAsun">
+                          <h4 class="card-title" id="tel-repeater">Histórico
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body">
+
+                            <div class="mat-elevation-z8" id="detaAsun">
+                              <!-- listado de alertas -->
+                              <table id="detaAsun" mat-table [dataSource]="dataSource3">
+                                <caption hidden id="detaAsun">Tabla que lista las alertas</caption>
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="nombreUsuario" id="detaAsun">
+                                  <th mat-header-cell id="nombreUsuario" class="colorEncabezado" *matHeaderCellDef>Nombre</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="descripcion" id="detaAsun">
+                                  <th mat-header-cell id="descripcion" class="colorEncabezado" *matHeaderCellDef>Descripción</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="fechaAlta" id="detaAsun">
+                                  <th mat-header-cell id="fechaAlta" class="colorEncabezado" *matHeaderCellDef>Fecha Alta </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.fechaAlta}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns3" id="detaAsun"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+                              </table>
+
+                              <mat-paginator #TableThreePaginator="matPaginator" id="detaAsun" [pageSize]="5"
+                                [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de historico -->
+                    </div>
+                    <div class="col-md-5">
+
+                      <!-- Inicia card de información requerida -->
+                      <div class="card">
+                        <div class="card-header" id="detaAsun">
+                          <h4 class="card-title" id="tel-repeater">Información Requerida
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body">
+
+                            <div class="row">
+                              <div class="col">
+                                <label class="styleEtiqueta">No es necesario más información del
+                                  asunto dentro de esta categoria…</label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de información requerida -->
+
+                    </div>
+                  </div>
+
+                  <div class="row" id="detaAsun">
+                    <div class="col-md-12" id="detaAsun">
+
+                      <!-- Inicia card de quejas -->
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Anexos Urls
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body" id="detaAsun">
+
+                            <div class="mat-elevation-z8" id="detaAsun">
+                              <!-- listado de alertas -->
+                              <table mat-table [dataSource]="dataSource2" id="detaAsun">
+                                <caption hidden>Tabla que lista las alertas</caption>
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="nombreUrl" id="detaAsun">
+                                  <th mat-header-cell id="nombreUrl" class="colorEncabezado" *matHeaderCellDef>Nombre</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombreUrl}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="descripcion" id="detaAsun">
+                                  <th mat-header-cell id="descripcion" class="colorEncabezado" *matHeaderCellDef>Descripción</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="fechaAlta" id="detaAsun">
+                                  <th mat-header-cell id="fechaAlta" class="colorEncabezado" *matHeaderCellDef>Fecha Alta </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.fechaAlta}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="url" id="detaAsun">
+                                  <th mat-header-cell id="url" class="colorEncabezado" *matHeaderCellDef>Url</th>
+                                  <td mat-cell *matCellDef="let element"> <a href="{{element.url}}">{{element.url}}</a>
+                                  </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns2" id="detaAsun"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                              </table>
+
+                              <mat-paginator #TableTwoPaginator="matPaginator" id="detaAsun" [pageSize]="5"
+                                [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de quejas -->
+                    </div>
+                    </div>
+                    <div class="row" id="detaAsun">
+
+                    <div class="col-md-12">
+
+                      <!-- Inicia card de anexos -->
+                      <div class="card" id="detaAsunpeti">
+                        <div class="card-header">
+                          <h4 class="card-title" id="tel-repeater">Anexos
+                          </h4>
+                        </div>
+                        <hr>
+                        <div class="card-content collapse show">
+                          <div class="card-body">
+
+                            <div class="mat-elevation-z8" id="detaAsunpeti">
+                              <!-- listado de alertas -->
+                              <table mat-table [dataSource]="dataSource" id="detaAsunpeti">
+                                <caption hidden>Tabla que lista las alertas</caption>
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="nombreArchivo" id="detaAsunpeti">
+                                  <th mat-header-cell id="nombreArchivo" class="colorEncabezado" *matHeaderCellDef>Nombre</th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombreArchivo}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="descripcion" id="detaAsunpeti">
+                                  <th mat-header-cell id="descripcion" class="colorEncabezado" *matHeaderCellDef>Descripción </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="fechaAlta" id="detaAsunpeti12">
+                                  <th mat-header-cell id="fechaAlta" class="colorEncabezado" *matHeaderCellDef>Fecha Alta </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.fechaAlta}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="idAnexoAsunto" id="detaAsunpeti12">
+                                  <th id="detaAsunpeti12" mat-header-cell class="colorEncabezado" *matHeaderCellDef>
+                                    Descargar Archivo
+                                  </th>
+                                  <td id="detaAsunpeti12" mat-cell *matCellDef="let element">
+                                    <button mat-icon-button id="detaAsunpeti12"
+                                      (click)="generaArchivo(element.idAnexoAsunto, element.archivo, element.extension)">
+                                      <mat-icon class="styleColor" id="detaAsunpeti12">download</mat-icon>
+                                    </button>
+                                  </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns" id="detaAsunpeti12"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                              </table>
+
+                              <mat-paginator #TableOnePaginator="matPaginator" id="detaAsunpeti12" [pageSize]="5"
+                                [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Termina card de anexos -->
+
+                    </div>
+                  </div>
+
+                  <div fxLayout="column wrap" id="detaAsunpeti12" fxLayoutAlign="center" class="style-layout"
+                    class="alineamiento">
+
+                    <button mat-raised-button color="warn" id="detaAsunpeti12" class="button-form" [hidden]="editarAsunto"
+                      (click)="habilitarEdicion(0); detalleAsunto(this.folio)">
+                      Cancelar
+                    </button>
+
+                    <button mat-raised-button color="warn" id="detaAsunE" class="button-form" [hidden]="editarAsunto"
+                      (click)="modificarAsuntoPeticionario()">
+                      Guardar Asunto
+                    </button>
+                    
+                  </div>
+                </form>
+              </section>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
