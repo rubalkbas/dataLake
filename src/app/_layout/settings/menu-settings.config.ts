@@ -37,8 +37,9 @@ export const MenuSettingsConfig: MenuConfig = {
 
         submenu:{
           items:[
+
             {
-              title:'BITACORA',
+              title:'Bitacora',
               page:'/dataLake/bitacora',
               funcionId: Perfiles.ADMINISTRACION,
 
@@ -46,11 +47,13 @@ export const MenuSettingsConfig: MenuConfig = {
             
             ,
             {
-              title:'Ejemplos',
-              page:'/dataLake/mantenimientoCatalogoClaves',
+              title:'JOBS',
+              page:'/dataLake/jobs',
               funcionId: Perfiles.ADMINISTRACION,
 
-            }, /*
+            }
+            
+            /*
             {
               title:'Consulta de Pagos Recibidos',
               page:'/dataLake/pagosRecibidos'
@@ -77,12 +80,7 @@ export const MenuSettingsConfig: MenuConfig = {
               title:'Mantenimiento Pagos Inconcistentes',
               page:'/dataLake/mantenimientoPagosInconsistentes'
             }, */
-            {
-              title:'Ejemplos',
-              page:'/dataLake/catalogoMensajesError',
-              funcionId: Perfiles.ADMINISTRACION,
-
-            }
+          
           ]
         }
       },
@@ -97,7 +95,7 @@ export const MenuSettingsConfig: MenuConfig = {
           items:[
             {
               title:'RESTRICCIONES',
-              page:'/dataLake/bitacora',
+              page:'',
               funcionId: Perfiles.ADMINISTRACION,
 
             }

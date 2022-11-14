@@ -1,0 +1,325 @@
+<div class="app-content content">
+
+
+    <div class="content-right">
+
+        <div class="content-wrapper">
+            <div class="content-header row mb-1">
+
+            </div>
+            <div class="content-body">
+                <section id="form-repeater">
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" id="tel-repeater">Jobs
+                                    </h4>
+                                </div>
+                                <hr>
+
+                                <div class="card-content">
+                                    <div class="card-body">
+
+                                        <div>
+                                            Lista de Jobs
+                                        </div>
+
+                                        <br>
+
+
+
+                                        <br>
+
+
+                                        <div class="mat-elevation-z8">
+                                            <!-- listado de alertas -->
+                                            <table mat-table [dataSource]="dataSource">
+                                                <!-- Position Column -->
+                                                <ng-container matColumnDef="jobId">
+                                                    <th mat-header-cell id="ver" *matHeaderCellDef>jobId </th>
+                                                    <td mat-cell *matCellDef="let element">
+                                                        <a style="color:#07639d">{{element.jobId}}</a>
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Name Column 
+                <ng-container matColumnDef="cronExpression">
+                    <th mat-header-cell id="acciones" *matHeaderCellDef>cronExpression </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cronExpression}} </td>
+                </ng-container>-->
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="cronJob">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>cronJob </th>
+                                                    <td mat-cell *matCellDef="let element">
+                                                        <div *ngIf="element == 1; then trueBlock; else falseBlock">
+                                                        </div>{{element.cronJob == 1 ? 'true' : 'false'}}
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="descripcion">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>descripcion
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.descripcion}}
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="interfaceName">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>interfaceName
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.interfaceName}}
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Name Column 
+                 <ng-container matColumnDef="jobClass">
+                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobClass </th>
+                    <td mat-cell *matCellDef="let element"> {{element.jobClass}} </td>
+                </ng-container>-->
+
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="jobGroup">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobGroup </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.jobGroup}} </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="jobName">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobName </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.jobName}} </td>
+                                                </ng-container>
+
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="jobStatus">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobStatus </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.jobStatus}} </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="jobTable">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobTable </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.jobTable}} </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="repeatTime">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>repeatTime </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.repeatTime}} </td>
+                                                </ng-container>
+
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="detalle">
+                                                    <th mat-header-cell id="detalle" *matHeaderCellDef>Detalle </th>
+                                                    <td mat-cell *matCellDef="let element">
+                                                        <button mat-icon-button aria-label="RUN"
+                                                            (click)="showEmail2($event,element.cronJob)">
+                                                            Detalle
+                                                        </button>
+                                                    </td>
+                                                </ng-container>
+
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="acciones">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>ACCIONES </th>
+                                                    <td mat-cell *matCellDef="let element">
+                                                        <button mat-icon-button aria-label="RUN"
+                                                            (click)="runJob(element)">
+                                                            <mat-icon style="color:#07639d">play_arrow</mat-icon>
+                                                        </button>
+                                                        <button mat-icon-button aria-label="PAUSE">
+                                                            <mat-icon style="color:#07639d">pause</mat-icon>
+                                                        </button>
+
+
+
+                                                    </td>
+                                                </ng-container>
+
+                                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                            </table>
+
+                                            <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons
+                                                aria-label="Select page of periodic elements">
+                                            </mat-paginator>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+
+
+            <!-- aqui cierra el form y el panel expandible-->
+
+
+        </div>
+
+        <div class="email-app-details2" id="app-details">
+            <div class="email-detail-header" id="detaPeti">
+                <div class="email-header-left d-flex align-items-center mb-1 " id="detaPeti">
+                    <span class="go-back mr-50" id="detaPeti">
+                        <em class="ficon feather ft-chevron-left font-medium-4 align-middle"
+                            (click)="showEmail($event);"></em>
+                    </span>
+                    <h5 class="email-detail-title font-weight-normal mb-0" id="detaPeti">
+                        Regresar: <strong> </strong>
+                    </h5>
+                </div>
+                <div class="email-header-right mb-1 ml-2 pl-1" id="detaPeti">
+                </div>
+            </div>
+            <!-- email aqui comienza el cuerpo del conteiner del asunto-->
+            <div class="email-scroll-area" id="detaPeti" fxFlex="auto" [perfectScrollbar]="config">
+                <!-- email details  -->
+                <div class="row" id="detaPeti">
+                    <div class="col-12" id="detaPeti23">
+
+                        <mat-card>
+                            <mat-card-header id="detaPeti23">
+                                <mat-card-title id="detaPeti23"> Detalle Jobs</mat-card-title>
+
+
+
+                            </mat-card-header>
+                            <hr>
+                            <br>
+                            <mat-card-content id="detaPeti23">
+                                <section id="detaPeti23">
+                                    <form id="detaPeti23" [formGroup]="formJobs" fxLayout="row wrap">
+                                        <div class="row" id="detaPeti23">
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="cronExpression">
+                                                        Expresión Cron</mat-label>
+                                                    <input matInput id="cronExpression" formControlName="cronExpression"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="cronJob">
+                                                        Cron Job</mat-label>
+                                                    <input matInput id="cronJob" formControlName="cronJob"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="descripcion">
+                                                        Cron Job</mat-label>
+                                                    <input matInput id="descripcion" formControlName="descripcion"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="row" id="detaPeti23">
+
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="interfaceName">
+                                                        Nombre Interfaz</mat-label>
+                                                    <input matInput id="interfaceName" formControlName="interfaceName"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="jobClass">
+                                                        Job Class</mat-label>
+                                                    <input matInput id="jobClass" formControlName="jobClass"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="jobGroup">
+                                                        Group Job</mat-label>
+                                                    <input matInput id="jobGroup" formControlName="jobGroup"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" id="detaPeti23">
+
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="jobName">
+                                                        Nombre Job</mat-label>
+                                                    <input matInput id="jobName" formControlName="jobName"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="jobTable">
+                                                        Job Table</mat-label>
+                                                    <input matInput id="jobTable" formControlName="jobTable"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label for="repeatTime">
+                                                        Tiempo de repeticón</mat-label>
+                                                    <input matInput id="repeatTime" formControlName="repeatTime"
+                                                        maxlength="50">
+
+                                                </mat-form-field>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </section>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </div>
+                <!-- email details  end-->
+
+            </div>
+
+            <!--/ Detailed Email View -->
+        </div>
+
+    </div>
+</div>

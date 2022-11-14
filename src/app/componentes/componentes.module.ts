@@ -67,6 +67,7 @@ import { ActualizaClaveComponent } from './dataLake/catalogoTablas/actualizaClav
 import { CatalogoStatusComponent } from './dataLake/catalogoStatus/catalogoStatus.component';
 import { AltaStatusComponent } from './dataLake/catalogoStatus/AltaStatus/altaStatus.component';
 import { CatalogoRestriccionComponent } from './dataLake/catalogoRestricciones/catalogoRestriccion.component';
+import { JobsComponent } from './dataLake/jobs/jobs.component';
 
 
 
@@ -86,7 +87,8 @@ import { CatalogoRestriccionComponent } from './dataLake/catalogoRestricciones/c
         ActualizaClaveComponent,
         CatalogoStatusComponent,
         AltaStatusComponent,
-        CatalogoRestriccionComponent
+        CatalogoRestriccionComponent,
+        JobsComponent
         
 
 
@@ -176,6 +178,12 @@ import { CatalogoRestriccionComponent } from './dataLake/catalogoRestricciones/c
         path: 'bitacora',
         component: BitacoraComponent
     }, 
+    {
+        path: 'jobs',
+        component: JobsComponent
+    }, 
+
+    
     {
         path: 'catalogoTablas',
         component: CatalogoTablasComponent

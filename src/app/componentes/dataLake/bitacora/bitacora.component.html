@@ -16,7 +16,7 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="tel-repeater">Catalogo de Bases de Datos
+                                    <h4 class="card-title" id="tel-repeater">Bitacora
                                     </h4>
                                 </div>
                                 <hr>
@@ -39,10 +39,10 @@
                                             <!-- listado de alertas -->
                                             <table mat-table [dataSource]="dataSource">
                                                 <!-- Position Column -->
-                                                <ng-container matColumnDef="jobId">
-                                                    <th mat-header-cell id="ver" *matHeaderCellDef>jobId </th>
+                                                <ng-container matColumnDef="nameTable">
+                                                    <th mat-header-cell id="ver" *matHeaderCellDef>nameTable </th>
                                                     <td mat-cell *matCellDef="let element">
-                                                        <a style="color:#07639d">{{element.jobId}}</a>
+                                                        <a style="color:#07639d">{{element.nameTable}}</a>
                                                     </td>
                                                 </ng-container>
 
@@ -53,27 +53,26 @@
                 </ng-container>-->
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="cronJob">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>cronJob </th>
+                                                <ng-container matColumnDef="descBaseDatos">
+                                                    <th mat-header-cell id="descBaseDatos" *matHeaderCellDef>descBaseDatos </th>
                                                     <td mat-cell *matCellDef="let element">
-                                                        <div *ngIf="element == 1; then trueBlock; else falseBlock">
-                                                        </div>{{element.cronJob == 1 ? 'true' : 'false'}}
+                                                        {{element.descBaseDatos}}
                                                     </td>
                                                 </ng-container>
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="descripcion">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>descripcion
+                                                <ng-container matColumnDef="fechaInicioJob">
+                                                    <th mat-header-cell id="fechaInicioJob" *matHeaderCellDef>fechaInicioJob
                                                     </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.descripcion}}
+                                                    <td mat-cell *matCellDef="let element"> {{element.fechaInicioJob}}
                                                     </td>
                                                 </ng-container>
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="interfaceName">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>interfaceName
+                                                <ng-container matColumnDef="fechaFinJob">
+                                                    <th mat-header-cell id="fechaFinJob" *matHeaderCellDef>fechaFinJob
                                                     </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.interfaceName}}
+                                                    <td mat-cell *matCellDef="let element"> {{element.fechaFinJob}}
                                                     </td>
                                                 </ng-container>
 
@@ -85,37 +84,25 @@
 
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="jobGroup">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobGroup </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.jobGroup}} </td>
+                                                <ng-container matColumnDef="nombreArchivoControl">
+                                                    <th mat-header-cell id="nombreArchivoControl" *matHeaderCellDef>nombreArchivoControl </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.nombreArchivoControl}} </td>
                                                 </ng-container>
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="jobName">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobName </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.jobName}} </td>
+                                                <ng-container matColumnDef="nombreArchivoDetalle">
+                                                    <th mat-header-cell id="nombreArchivoDetalle" *matHeaderCellDef>nombreArchivoDetalle </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.nombreArchivoDetalle}} </td>
                                                 </ng-container>
 
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="jobStatus">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobStatus </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.jobStatus}} </td>
+                                                <ng-container matColumnDef="numeroRegistros">
+                                                    <th mat-header-cell id="numeroRegistros" *matHeaderCellDef>numeroRegistros </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.numeroRegistros}} </td>
                                                 </ng-container>
 
-                                                <!-- Name Column -->
-                                                <ng-container matColumnDef="jobTable">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>jobTable </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.jobTable}} </td>
-                                                </ng-container>
-
-                                                <!-- Name Column -->
-                                                <ng-container matColumnDef="repeatTime">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>repeatTime </th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.repeatTime}} </td>
-                                                </ng-container>
-
-
+                                         
                                                 <!-- Name Column -->
                                                 <ng-container matColumnDef="detalle">
                                                     <th mat-header-cell id="detalle" *matHeaderCellDef>Detalle </th>
@@ -127,23 +114,7 @@
                                                     </td>
                                                 </ng-container>
 
-
-                                                <!-- Name Column -->
-                                                <ng-container matColumnDef="acciones">
-                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>ACCIONES </th>
-                                                    <td mat-cell *matCellDef="let element">
-                                                        <button mat-icon-button aria-label="RUN"
-                                                            (click)="runJob(element)">
-                                                            <mat-icon style="color:#07639d">play_arrow</mat-icon>
-                                                        </button>
-                                                        <button mat-icon-button aria-label="PAUSE">
-                                                            <mat-icon style="color:#07639d">pause</mat-icon>
-                                                        </button>
-
-
-
-                                                    </td>
-                                                </ng-container>
+ 
 
                                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

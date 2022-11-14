@@ -8,37 +8,39 @@ import { BitacoraDataLakeService } from "src/app/_services/BitacoraDataLake.serv
 
 
 import Swal from "sweetalert2";
+import { FormBuilder, FormGroup } from "@angular/forms";
 export interface CatalogoTabla {
-  nameTable: string;
-  descBaseDatos: string;
-  fechaInicioJob: string;
-  fechaFinJob: string;
-  nombreArchivoControl: string;
-  nombreArchivoDetalle: string;
-  numeroRegistros: string;
- 
+  jobId: string;
+  cronJob: string;
+  descripcion: string;
+  interfaceName: string;
+  jobGroup: string;
+  jobName: string;
+  jobStatus: string;
+  jobTable: string;
+  repeatTime: string;
  
 }
 
 const ELEMENT_DATA: CatalogoTabla[] = [
-  {nameTable : '1', descBaseDatos: 'Ingenium', fechaInicioJob : 'Ejemplo TABLA 1',fechaFinJob : '1', nombreArchivoControl: 'Ingenium', nombreArchivoDetalle : 'Ejemplo TABLA 1',numeroRegistros : '1' },
+  {jobId : '1', cronJob: 'Ingenium', descripcion : 'Ejemplo TABLA 1',interfaceName : '1', jobGroup: 'Ingenium', jobName : 'Ejemplo TABLA 1',jobStatus : '1', jobTable: 'Ingenium', repeatTime : 'Ejemplo TABLA 1'},
  
   
 ];
 
 @Component({
-    selector: 'app-bitacora',
-    templateUrl: './bitacora.component.html',
-    styleUrls: ['./bitacora.component.scss']
+    selector: 'app-jobs',
+    templateUrl: './jobs.component.html',
+    styleUrls: ['./jobs.component.scss']
   })
   
   
-  export class BitacoraComponent implements OnInit {
+  export class JobsComponent implements OnInit {
 
 
     //displayedColumns: string[] = ['jobId','cronExpression','cronJob','descripcion','interfaceName','jobClass','jobGroup','jobName','jobStatus','jobTable','repeatTime','acciones'];
-    displayedColumns: string[] = ['nameTable','descBaseDatos','fechaInicioJob','fechaFinJob','nombreArchivoControl','nombreArchivoDetalle','numeroRegistros','detalle'];
-    
+    displayedColumns: string[] = ['jobId','cronJob','descripcion','interfaceName','jobGroup','jobName','jobStatus','jobTable','repeatTime','detalle','acciones'];
+    formJobs: FormGroup;
     dataSource = new MatTableDataSource<CatalogoTabla>(ELEMENT_DATA);
     
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,7 +52,8 @@ const ELEMENT_DATA: CatalogoTabla[] = [
     constructor(  public dialog: MatDialog ,
       private dataLakeCatalogoService:DataLakeCatalogoService,
       private BitacoraDataLakeService:BitacoraDataLakeService,
-      private renderer: Renderer2,) {
+      private renderer: Renderer2,
+      public formBuilder: FormBuilder,) {
 
     }
 
@@ -64,6 +67,20 @@ const ELEMENT_DATA: CatalogoTabla[] = [
   
 
       });
+
+      this.formJobs = this.formBuilder.group({
+        cronExpression: ['',],
+        cronJob: ['',],
+        descripcion: [''],
+        interfaceName: [''],
+        jobClass: [''],
+        jobGroup: [''],
+        jobName: [''],
+        jobTable: [''],
+        repeatTime: [''],
+ 
+      });
+  
     }
 
 

@@ -468,6 +468,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
       || this.router.url ===  '/dataLake/bitacora'
 
       || this.router.url === '/dataLake/catalogoStatus' 
+      || this.router.url === '/dataLake/jobs'
       
     )) {
       this.document.body.classList.remove('menu-open');

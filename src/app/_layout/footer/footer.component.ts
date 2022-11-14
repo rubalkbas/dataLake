@@ -33,7 +33,7 @@ export class FooterComponent implements OnInit {
         switch(this.router.url){
           case '/portalSoluciones/consultaAsunto': case '/portalSoluciones/busquedaCuentas' : case '/portalSoluciones/busquedaAsuntosRe':  case '/portalSoluciones/consultaAsunto' :
           case '/portalSoluciones/consultaAsuntoPeticionario': case '/portalSoluciones/autoAyuda': case '/dataLake/catalogoDB' :  case '/dataLake/bitacora' :
-            case '/dataLake/catalogoStatus' :  
+            case '/dataLake/catalogoStatus' :   case '/dataLake/jobs' :  
             
 
   
