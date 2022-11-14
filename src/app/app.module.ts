@@ -92,18 +92,18 @@ import {MatTreeModule} from '@angular/material/tree';
  
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
- 
-import { AsuntosService } from './_services/asuntos.service';
+  
 import { RolesComponent } from './componentes/admin/roles/roles.component';
 import { UsuariosComponent } from './componentes/admin/usuarios/usuarios.component';
 import { PopComponent } from './componentes/admin/pop/pop.component'
 import { ConexionService } from './_services/conexion.service';
-import { BusquedasService } from './_services/busquedas.service';
+ 
 import { FuncionesComponent } from './componentes/admin/funciones/funciones.component';
 import { ServicioCompartido } from './_services/servicioCompartido.service';
 import { InboundInterceptor } from './_services/interceptor.service';
 import { CookieService } from './_services/cookie.service';
 import { DataLakeCatalogoService } from './_services/CatalogosDataLake.service';
+import { BitacoraDataLakeService } from './_services/BitacoraDataLake.service';
  
 export function appInit(conexion: ConexionService) {
     return () => conexion.load();
@@ -200,10 +200,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         DataApiService,
         CookieService,
         ApplicationApiService,
-        AsuntosService,
-        BusquedasService,
         ServicioCompartido,
         DataLakeCatalogoService,
+        BitacoraDataLakeService,
 
         {
             provide: HAMMER_GESTURE_CONFIG,

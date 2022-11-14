@@ -50,20 +50,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
  
+ 
+ 
   
-import { AlertasComponent } from './administrador/alertas/alertas.component';
-import { AltaAsuntoComponent } from './administrador/asunto/altaAsunto/altaAsunto.component';
- 
- 
- 
-import { AutoAyudaComponent } from './peticionario/auto-ayuda/auto-ayuda.component';
-import { ConsultaAsuntoComponent } from './resolutor/consulta-asunto/consulta-asunto.component'; 
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { BlockCopyPasteDirective } from 'src/app/_directives/block-copy-paste.directive';
-import { DetalleAsuntoComponent } from './administrador/asunto/detalleAsunto/detalleAsunto.component';
+ 
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { DetalleAsuntoResolutorComponent } from './administrador/asunto/detalleAsuntoResolutor/detalleAsuntoResolutor.component';
-import { ConsultaAsuntoPeticionarioComponent } from './peticionario/consultaAsuntoPeticionario/consultaAsuntoPeticionario.component';
+  
 import { BitacoraComponent } from './dataLake/bitacora/bitacora.component';
 import { CatalogoTablasComponent } from './dataLake/catalogoTablas/catalogoTablas.component';
 import { CatalogoBDComponent } from './dataLake/catalogoBaseDatos/catalogoBD.component';
@@ -81,17 +75,9 @@ import { CatalogoRestriccionComponent } from './dataLake/catalogoRestricciones/c
 @NgModule({
     declarations: [ 
     
-         
-        AlertasComponent,
-        AltaAsuntoComponent,
-      
-        AutoAyudaComponent,
-        ConsultaAsuntoComponent,
-        
+           
         BlockCopyPasteDirective,
-        DetalleAsuntoComponent,
-        DetalleAsuntoResolutorComponent,
-        ConsultaAsuntoPeticionarioComponent,
+   
         BitacoraComponent,
         CatalogoTablasComponent,
         CatalogoBDComponent,
@@ -183,40 +169,7 @@ import { CatalogoRestriccionComponent } from './dataLake/catalogoRestricciones/c
         RouterModule.forChild([
     
            
-            {
-                path: 'alertas',
-                component: AlertasComponent
-            }, 
-            {
-                path: 'altaAsunto/:idCat',
-                component: AltaAsuntoComponent
-            },
-            {
-                path: 'autoAyuda',
-                component: AutoAyudaComponent
-            }, 
-            {
-                path: 'consultaAsunto',
-                component: ConsultaAsuntoComponent
-            }, 
-            
-            {
-                path: 'detalleAsunto/:folio',
-                component: DetalleAsuntoComponent
-            },
-
-            {
-                path: 'consultaAsuntoResolutor',
-                component: ConsultaAsuntoComponent
-            },
-            {
-                path: 'detalleAsuntoResolutor/:folio',
-                component: DetalleAsuntoResolutorComponent
-            },
-            {
-                path: 'consultaAsuntoPeticionario',
-                component: ConsultaAsuntoPeticionarioComponent
-            },
+      
             
     /****** DATA LAKE *******/
     {

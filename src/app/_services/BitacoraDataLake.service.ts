@@ -15,16 +15,27 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class BusquedasService {
-
-  apiURL = SettingsApp.app.urlBusqueda + '/busquedas';
-
+export class BitacoraDataLakeService {
+    
+  apiURL = SettingsApp.app.urlBusqueda + '';
+  apiURL2 = SettingsApp.app.urlQRTZ + '';
 
   constructor(private http: HttpClient) { }
 
-  consultarCrteriosId(id:any): Observable<any> {
-    return this.http.get(this.apiURL + '/getGuardadasByUsuario/' + id  , httpOptions);
+
+  consultarBasesDatos(): Observable<any> {
+    return this.http.get(this.apiURL + '/catalogoBaseDatos/getAllCatBaseDatos'  , httpOptions);
   }
+
+  runJobs(SchedulerJobInfo:any): Observable<any> {
+    return this.http.post(this.apiURL2 + '/api/runJob'  , SchedulerJobInfo,  httpOptions);
+  }
+
+  consultarBitacora(): Observable<any> {
+    return this.http.get(this.apiURL + '/bitacora/getAllBitacora'  , httpOptions);
+  }
+
+  
   
   grabarBusqueda(request: any): Observable<any> {
     return this.http.post(this.apiURL + '/guardarBusqueda', request, httpOptions);

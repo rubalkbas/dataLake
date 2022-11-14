@@ -4,6 +4,9 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { DataLakeCatalogoService } from "src/app/_services/CatalogosDataLake.service";
+import { BitacoraDataLakeService } from "src/app/_services/BitacoraDataLake.service";
+
+
 import Swal from "sweetalert2";
 export interface CatalogoTabla {
   jobId: string;
@@ -47,6 +50,7 @@ const ELEMENT_DATA: CatalogoTabla[] = [
 
     constructor(  public dialog: MatDialog ,
       private dataLakeCatalogoService:DataLakeCatalogoService,
+      private BitacoraDataLakeService:BitacoraDataLakeService,
       private renderer: Renderer2,) {
 
     }
@@ -145,7 +149,7 @@ const ELEMENT_DATA: CatalogoTabla[] = [
       const toggleIcon = document.getElementById('app-details');
       if (event.currentTarget.className === 'mat-focus-indicator mat-raised-button mat-button-base') {
         this.renderer.addClass(toggleIcon, 'show');
-      } else if (event.currentTarget.className === 'ficon feather ft-chevron-left font-medium-4 align-middle') {
+      } else if (event.currentTarget.className === 'ficon feather ft-chevron-left font-medium-4 align-middle ft-maximize') {
         this.renderer.removeClass(toggleIcon, 'show');
       }
     }

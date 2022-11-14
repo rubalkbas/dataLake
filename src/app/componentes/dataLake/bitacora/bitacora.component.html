@@ -181,10 +181,10 @@
                 <div class="email-header-left d-flex align-items-center mb-1 " id="detaPeti">
                     <span class="go-back mr-50" id="detaPeti">
                         <em class="ficon feather ft-chevron-left font-medium-4 align-middle"
-                            (click)="showEmail($event); regresaEdicion(0); addInfo2(0)"></em>
+                            (click)="showEmail($event);"></em>
                     </span>
                     <h5 class="email-detail-title font-weight-normal mb-0" id="detaPeti">
-                        Detalle Bitacora: <strong> </strong>
+                        Regresar: <strong> </strong>
                     </h5>
                 </div>
                 <div class="email-header-right mb-1 ml-2 pl-1" id="detaPeti">
@@ -198,24 +198,141 @@
 
                         <mat-card>
                             <mat-card-header id="detaPeti23">
-                                <mat-card-title id="detaPeti23"></mat-card-title>
-                                <div *ngIf="this.statusAsunto === 1">
-                                    <button id="detaPeti23" mat-raised-button color="warn"
-                                           >
-                                        <mat-icon class="colorIcono">description</mat-icon> Editar
-                                    </button>
-                                </div>
-                                 
+                                <mat-card-title id="detaPeti23"> Detalle Bitacora</mat-card-title>
+                                
                                 
                                  
                             </mat-card-header>
+                            <hr>
                             <br>
                             <mat-card-content id="detaPeti23">
                                 <section id="detaPeti23">
-                                    
+                                    <div class="row" id="detaPeti23">
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="cronExpression">
+                                                    Expresión Cron</mat-label>
+                                                <input matInput
+                                                    id="cronExpression"
+                                                    formControlName="cronExpression"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="cronJob">
+                                                    Cron Job</mat-label>
+                                                <input matInput
+                                                    id="cronJob"
+                                                    formControlName="cronJob"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="descripcion">
+                                                    Cron Job</mat-label>
+                                                <input matInput
+                                                    id="descripcion"
+                                                    formControlName="descripcion"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
 
 
 
+                                    </div>
+
+                                    <div class="row" id="detaPeti23">
+
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="interfaceName">
+                                                   Nombre Interfaz</mat-label>
+                                                <input matInput
+                                                    id="interfaceName"
+                                                    formControlName="interfaceName"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="jobClass">
+                                                    Job Class</mat-label>
+                                                <input matInput
+                                                    id="jobClass"
+                                                    formControlName="jobClass"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="jobGroup">
+                                                    Group Job</mat-label>
+                                                <input matInput
+                                                    id="jobGroup"
+                                                    formControlName="jobGroup"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row" id="detaPeti23">
+
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="jobName">
+                                                   Nombre Job</mat-label>
+                                                <input matInput
+                                                    id="jobName"
+                                                    formControlName="jobName"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="jobTable">
+                                                    Job Table</mat-label>
+                                                <input matInput
+                                                    id="jobTable"
+                                                    formControlName="jobTable"
+                                                   
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label for="repeatTime">
+                                                    Tiempo de repeticón</mat-label>
+                                                <input matInput
+                                                    id="repeatTime"
+                                                    formControlName="repeatTime"
+                                                    maxlength="50">
+                                     
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+ 
                                 </section>
                             </mat-card-content>
                         </mat-card>

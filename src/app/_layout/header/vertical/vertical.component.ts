@@ -12,7 +12,7 @@ import { AppConstants } from 'src/app/_helpers/app.constants';
 import { NotificacionesService } from 'src/app/_services/notificaciones.service';
 import { takeWhile } from 'rxjs/operators';
 import { ServicioCompartido } from 'src/app/_services/servicioCompartido.service';
-import { CentrosService } from 'src/app/_services/centros.service';
+ 
 import { SettingsApp } from 'src/app/_common-model/settings-app';
 import { LocalSesion } from 'src/app/_bussines-model/local-session';
 import SessionJson from 'src/assets/local-sesion1.json';
@@ -52,7 +52,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
   clickEventSubscription: Subscription;
 
   constructor(
-    private centroService: CentrosService,
+ 
     private notificacionesService: NotificacionesService,
     @Inject(DOCUMENT) private document: Document,
     private _renderer: Renderer2,
@@ -147,9 +147,7 @@ export class VerticalComponent implements OnInit, AfterViewInit {
 
   obtenerCentro(id) {
     if (!this.nombreCentro) {
-      this.centroService.centroPorId(id).subscribe(data => {
-        this.nombreCentro = data.response.nombre;
-      });
+      
     } else {
       return false;
     }
