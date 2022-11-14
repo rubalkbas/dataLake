@@ -1,5 +1,6 @@
 
 import { Component, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
@@ -33,10 +34,12 @@ const ELEMENT_DATA: CatalogoTabla[] = [
 
     
     
-    displayedColumns: string[] = [ 'descBaseDatos','urlWso2','rutaArchivosNuevos','rutaArchivosProcesados','rutaArchivosEliminar','fechaAltaR','estatusR'];
+    displayedColumns: string[] = [ 'descBaseDatos','urlWso2','rutaArchivosNuevos','rutaArchivosProcesados','rutaArchivosEliminar','fechaAltaR','estatusR','detalle'];
     dataSource = new MatTableDataSource<CatalogoTabla>(ELEMENT_DATA);
+    formCriterio: FormGroup;
     
     @ViewChild(MatPaginator) paginator: MatPaginator;
+  tipoMov: string= 'alt';
 
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
@@ -44,7 +47,9 @@ const ELEMENT_DATA: CatalogoTabla[] = [
 
     constructor(  public dialog: MatDialog ,
       private dataLakeCatalogoService:DataLakeCatalogoService,
-      private renderer: Renderer2) {
+      private renderer: Renderer2,
+      public formBuilder: FormBuilder,
+      fb: FormBuilder,) {
 
     }
 
@@ -60,7 +65,16 @@ const ELEMENT_DATA: CatalogoTabla[] = [
   
 
       });
-
+      
+      this.formCriterio = this.formBuilder.group({
+        descBaseDatos: ['',],
+        urlWso2: ['',],
+        rutaArchivosEliminar: [''],
+        rutaArchivosNuevos: [''],
+        rutaArchivosProcesados: [''],
+    
+      });
+  
     }
 
    /**
@@ -158,13 +172,20 @@ const ELEMENT_DATA: CatalogoTabla[] = [
       const toggleIcon = document.getElementById('compose-sidebar');
       const toggleSidebar = document.getElementById('sidebar-left');
       const toggleOverlay = document.getElementById('app-content-overlay');
-      if (event.currentTarget.className === 'btn btn-danger btn-glow btn-block my-2 compose-btn') {
+      if (event.currentTarget.innerHTML === 'DETALLE') {
+        this.tipoMov = 'mod';
+      }else{
+        this.tipoMov = 'alt';
+      }
+      
+      if (event.currentTarget.className === 'mat-focus-indicator mat-raised-button mat-button-base cdk-focused cdk-mouse-focused' ||  event.currentTarget.innerHTML === 'DETALLE') {
         this.renderer.addClass(toggleIcon, 'show');
         this.renderer.removeClass(toggleSidebar, 'show');
         this.renderer.addClass(toggleOverlay, 'show');
-      } else if (event.currentTarget.className === 'btn btn-danger btn-glow btn-block my-2 compose-btn show') {
+      } else if (event.currentTarget.className === 'mat-focus-indicator mat-raised-button mat-button-base cdk-focused cdk-mouse-focused show' ||  event.currentTarget.innerHTML ===  'DETALLE show') {
         this.renderer.removeClass(toggleIcon, 'show');
       }
+    
     }
     /**
     * Remove overlay when open sidebar

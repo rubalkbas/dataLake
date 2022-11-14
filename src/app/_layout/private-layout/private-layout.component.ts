@@ -73,6 +73,7 @@ export class PrivateLayoutComponent implements OnInit {
  
           || this.router.url === '/portalSoluciones/autoAyuda'
           || this.router.url === '/dataLake/catalogoDB'
+          || this.router.url ===  '/dataLake/bitacora'
           ){
             return true
           }
@@ -157,6 +158,7 @@ export class PrivateLayoutComponent implements OnInit {
       || this.router.url === '/portalSoluciones/consultaAsuntoPeticionario' 
       || this.router.url === '/portalSoluciones/autoAyuda' 
       || this.router.url === '/dataLake/catalogoDB'
+      || this.router.url ===  '/dataLake/bitacora'
   ) {
       currentBodyClassList.push('email-application');
       // footer.classList.add('fixed-bottom');

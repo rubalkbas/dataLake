@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
@@ -28,7 +28,8 @@ import Swal from "sweetalert2";
     }
 
     constructor(  public dialog: MatDialog ,
-      private dataLakeCatalogoService:DataLakeCatalogoService) {
+      private dataLakeCatalogoService:DataLakeCatalogoService,
+      private renderer: Renderer2,) {
 
     }
 
@@ -66,5 +67,6 @@ import Swal from "sweetalert2";
       });
 
     }
-    
+  
+
   }

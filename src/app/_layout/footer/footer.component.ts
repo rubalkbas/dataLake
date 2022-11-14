@@ -32,7 +32,7 @@ export class FooterComponent implements OnInit {
       if (footerElement.item(0) && event instanceof NavigationEnd){
         switch(this.router.url){
           case '/portalSoluciones/consultaAsunto': case '/portalSoluciones/busquedaCuentas' : case '/portalSoluciones/busquedaAsuntosRe':  case '/portalSoluciones/consultaAsunto' :
-          case '/portalSoluciones/consultaAsuntoPeticionario': case '/portalSoluciones/autoAyuda': case '/dataLake/catalogoDB' :
+          case '/portalSoluciones/consultaAsuntoPeticionario': case '/portalSoluciones/autoAyuda': case '/dataLake/catalogoDB' :  case '/dataLake/bitacora' :  
             
 
   
