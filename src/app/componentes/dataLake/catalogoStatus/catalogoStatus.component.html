@@ -1,117 +1,194 @@
 <div class="app-content content">
-    <div class="content-wrapper">
-        <div class="content-header row mb-1">
+
+    <div class="sidebar-left" id="sidebar-left">
+        <div class="sidebar">
+
+
+
+            <!-- User new mail right area -->
+            <div class="compose-new-mail-sidebar" id="compose-sidebar" fxFlex="auto" [perfectScrollbar]="config">
+                <div class="card mb-0 shadow-none quill-wrapper p-0" id="detaPeti">
+                    <div class="card-header" id="detaPeti">
+                        <h3 class="card-title" id="emailCompose">Nueva BD</h3>
+
+                        <button type="button" class="close close-icon" id="showCompose" (click)="showCompose($event)">
+                            <em class="ficon feather ft-x"></em>
+                        </button>
+                    </div>
+                    <!-- form start -->
+                    <br>
+                    <form action="" id="detaPeti" [formGroup]="form">
+                        <div class="card-content" id="detaPeti">
+                            <div class="card-body pt-0" id="detaPeti">
+                                <div class="form-group pb-50">
+                                    <label for="emailfrom">Ingrese los datos de la nueva BD</label>
+
+                                </div>
+
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label id="descEstatus" for="descEstatus">Descripción Estatus
+                                    </mat-label>
+                                    <input id="descEstatus" formControlName="descEstatus"
+                                        placeholder="Ingrese un Valor" matInput maxlength="255">
+
+                                </mat-form-field>
+
+
+                              
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="card-footer border-0 d-flex justify-content-end pt-0" id="detaPeti">
+                            <button id="detaPeti" mat-raised-button color="primary"
+                                (click)="showCompose($event);cancelarFiltro()">
+                                <mat-icon class="colorIcono">cancel</mat-icon> Cancelar
+                            </button>
+                            &nbsp;
+                            <div *ngIf="this.tipoMov === 'alt'">
+                                <button id="detaPeti" mat-raised-button color="primary" (click)="agregaFiltro()">
+                                    <mat-icon class="colorIcono">add</mat-icon> Agregar BD
+                                </button>
+                            </div>
+                            <div *ngIf="this.tipoMov === 'mod'">
+                                <button id="detaPeti" mat-raised-button color="primary" (click)="agregaFiltro()">
+                                    <mat-icon class="colorIcono">update</mat-icon> Modifica BD
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- form start end-->
+                </div>
+            </div>
+            <!--/ User Chat profile right area -->
 
         </div>
-        <div class="content-body">
-            <section id="form-repeater">
+    </div>
+
+    <div class="content-right">
+
+        <div class="content-wrapper">
+            <div class="content-header row mb-1">
+
+            </div>
+            <div class="content-body">
+                <section id="form-repeater">
 
 
-                <div class="row">
-                    <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title" id="tel-repeater">Catalogo de Estatus
-                                </h4>
-                            </div>
-                            <hr>
-                            <div class="card-content">
-                                <div class="card-body">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" id="tel-repeater">Catalogo de Estatus
+                                    </h4>
+                                </div>
+                                <hr>
+                                <div class="card-content">
+                                    <div class="card-body">
 
-                                    <div>
-                                        Mantenimiento del Catálogo de Estatus
-                                    </div>
+                                        <div>
+                                            Mantenimiento del Catálogo de Estatus
+                                        </div>
 
-                                    <br>
+                                        <br>
 
-                                    <div fxLayout="column wrap" fxLayoutAlign="center" style="margin-top:10px"
-                                        align="right">
-                                        <button mat-raised-button
-                                            style="width:20%; margin-right: 10px; background-color: #07639d; color: white;"
-                                            (click)="openDialog()">
-                                            Agregar Nueva Estatus
-                                        </button>
-
-
-                                    </div>
-
-                                    <br>
+                                        <div fxLayout="column wrap" fxLayoutAlign="center" style="margin-top:10px"
+                                            align="right">
+                                            <button mat-raised-button
+                                                style="width:20%; margin-right: 10px; background-color: #07639d; color: white;"
+                                                (click)="showComposeSidebar($event)">
+                                                Agregar Nueva Estatus
+                                            </button>
 
 
-                                    <div class="mat-elevation-z8">
-                                        <!-- listado de alertas -->
-                                        <table mat-table [dataSource]="dataSource">
+                                        </div>
+
+                                        <br>
+
+
+                                        <div class="mat-elevation-z8">
+                                            <!-- listado de alertas -->
+                                            <table mat-table [dataSource]="dataSource">
 
                                                 <!-- Weight Column -->
                                                 <ng-container matColumnDef="idCatEstatus">
-                                                    <th mat-header-cell id="descripcion" *matHeaderCellDef>Id Estatus</th>
-                                                    <td mat-cell *matCellDef="let element"> {{element.idCatEstatus}} </td>
+                                                    <th mat-header-cell id="descripcion" *matHeaderCellDef>Id Estatus
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.idCatEstatus}}
+                                                    </td>
                                                 </ng-container>
-    
- 
-                                            <!-- Weight Column -->
-                                            <ng-container matColumnDef="descEstatus">
-                                                <th mat-header-cell id="descripcion" *matHeaderCellDef>Nombre</th>
-                                                <td mat-cell *matCellDef="let element"> {{element.descEstatus}} </td>
-                                            </ng-container>
-
-                                        
-                                            <!-- Name Column -->
-                                            <ng-container matColumnDef="fechaAltaR">
-                                                <th mat-header-cell id="acciones" *matHeaderCellDef>Fecha Alta
-                                                </th>
-                                                <td mat-cell *matCellDef="let element"> {{element.fechaAltaR}} </td>
-                                            </ng-container>
-
-                                            <!-- Name Column -->
-                                            <ng-container matColumnDef="estatusR">
-                                                <th mat-header-cell id="acciones" *matHeaderCellDef>Esatus</th>
-                                                <td mat-cell *matCellDef="let element"> {{element.estatusR}} </td>
-                                            </ng-container>
- 
-                                            <!-- Position Column -->
-                                            <ng-container matColumnDef="accion">
-                                                <th mat-header-cell id="ver" *matHeaderCellDef> Ruta Arch Procesados
-                                                </th>
-                                                <td mat-cell *matCellDef="let element">
-                                                    <a style="color:#07639d" (click)="openDialog2()">Activar/Desactivar</a>
-                                                </td>
-                                            </ng-container>
 
 
+                                                <!-- Weight Column -->
+                                                <ng-container matColumnDef="descEstatus">
+                                                    <th mat-header-cell id="descripcion" *matHeaderCellDef>Nombre</th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.descEstatus}}
+                                                    </td>
+                                                </ng-container>
+
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="fechaAltaR">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>Fecha Alta
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.fechaAltaR}} </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="estatusR">
+                                                    <th mat-header-cell id="acciones" *matHeaderCellDef>Esatus</th>
+                                                    <td mat-cell *matCellDef="let element"> {{element.estatusR}} </td>
+                                                </ng-container>
+
+                                                <!-- Position Column -->
+                                                <ng-container matColumnDef="accion">
+                                                    <th mat-header-cell id="ver" *matHeaderCellDef> Ruta Arch Procesados
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let element">
+                                                        <a style="color:#07639d"
+                                                            (click)="openDialog2()">Activar/Desactivar</a>
+                                                    </td>
+                                                </ng-container>
 
 
 
 
-                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                                        </table>
 
-                                        <mat-paginator [pageSizeOptions]="[50]" showFirstLastButtons
-                                            aria-label="Select page of periodic elements">
-                                        </mat-paginator>
+
+                                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                            </table>
+
+                                            <mat-paginator [pageSizeOptions]="[50]" showFirstLastButtons
+                                                aria-label="Select page of periodic elements">
+                                            </mat-paginator>
+                                        </div>
+
+
+
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
+                </section>
 
-            </section>
+
+            </div>
+
+
+
+
+            <!-- aqui cierra el form y el panel expandible-->
 
 
         </div>
-
-
-
-
-        <!-- aqui cierra el form y el panel expandible-->
-
-
     </div>
 </div>
